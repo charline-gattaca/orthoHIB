@@ -1,0 +1,787 @@
+/* ==========================================================================
+   OrthoHiB — maquette
+   Registre : nouvelle maquette HiB (fond bleu ciel à croix blanches, contenu
+   posé sur des cartes blanc cassé à angles vifs, titres arrondis espacés,
+   pied de page marine). Palette prélevée sur la référence ; texte foncé
+   pour le contraste AA (validé par le client).
+   ========================================================================== */
+
+:root {
+  /* surfaces — teintes exactes de la référence */
+  --ciel-haut: #C9DAEE;
+  --ciel-bas: #B3CBE7;
+  --carte: #F9FAF7;
+  --blanc: #FFFFFF;
+  --marine: #27487A;
+  --bleu: #77A3D2;
+  --bleu-pale: #E3EDF7;
+  --corail: #DE4E3A;
+  --peche: #F2DCD8;
+  --trait: #D5E1EF;
+
+  /* texte — nuances foncées des mêmes couleurs (WCAG AA) */
+  --bleu-titre: #5F8DC0;     /* grand texte bleu, 3,3:1 */
+  --bleu-texte: #3F6A9E;     /* petit texte bleu, 5,3:1 */
+  --corail-titre: #C8665A;   /* grand texte corail, 3,6:1 */
+  --corail-texte: #B04A3E;   /* petit texte corail, 5,2:1 */
+  --texte: #334B6B;
+
+  --titres: "Quicksand", "Nunito", system-ui, sans-serif;
+  --police: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ombre: 0 22px 44px -22px rgba(39, 72, 122, .45);
+  /* hauteur de la silhouette : suit la hauteur de l'écran pour que tout le hero reste visible sans défiler */
+  --espace-hero: clamp(24px, 5.5vh, 60px);   /* entre l'en-tête et la carte du hero */
+  --corps-h: clamp(340px, calc(100vh - 215px - var(--espace-hero)), 580px);
+  --ombre-douce: 0 14px 30px -18px rgba(39, 72, 122, .4);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  color: var(--texte);
+  font-family: var(--police);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--ciel-bas);
+  background-image:
+    url("../img/croix.svg"),
+    radial-gradient(ellipse 45% 35% at 12% 8%, rgba(255, 255, 255, .45), transparent 70%),
+    radial-gradient(ellipse 40% 30% at 88% 22%, rgba(255, 255, 255, .35), transparent 70%),
+    radial-gradient(ellipse 50% 30% at 15% 70%, rgba(140, 175, 220, .35), transparent 70%),
+    linear-gradient(180deg, var(--ciel-haut), var(--ciel-bas));
+  background-size: 900px 700px, auto, auto, auto, auto;
+}
+
+img { max-width: 100%; height: auto; }
+
+a { color: inherit; }
+
+.enveloppe {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+.sr {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ---------- boutons : aplats marine à angles vifs, comme « Accès pro » ---------- */
+
+.bouton {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5em;
+  border: 0; border-radius: 0;
+  padding: 13px 22px;
+  font: 600 15px/1.2 var(--police);
+  letter-spacing: .05em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background-color .2s, transform .2s;
+}
+.bouton:hover { transform: translateY(-1px); }
+.bouton-marine { background: var(--marine); color: var(--blanc); }
+.bouton-marine:hover { background: #1E3A64; }
+
+.titre-section {
+  margin: 0;
+  font: 700 clamp(22px, 2.3vw, 32px)/1.2 var(--titres);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--bleu-titre);
+  hyphens: none;
+}
+
+/* ==========================================================================
+   En-tête — posé sur le fond, sans bandeau
+   ========================================================================== */
+
+.entete { position: relative; z-index: 10; }
+
+.entete-inner {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 32px; padding-block: 22px 18px;
+}
+
+.marque { display: block; line-height: 0; }
+.marque-logo { width: 128px; }
+
+.menu { display: flex; align-items: center; gap: 26px; padding-bottom: 6px; }
+.menu-liste { display: flex; align-items: center; list-style: none; margin: 0; padding: 0; }
+.menu-liste li { display: flex; align-items: center; }
+.menu-liste li + li::before {
+  content: ""; width: 1.5px; height: 18px; margin-inline: 22px;
+  background: var(--marine); opacity: .7;
+}
+.menu-liste a {
+  color: var(--marine); text-decoration: none;
+  font-size: 15px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+}
+.menu-liste a:hover { text-decoration: underline; text-underline-offset: 6px; }
+.menu-pro { padding: 9px 13px; font-size: 15px; font-weight: 500; letter-spacing: .04em; }
+
+.burger { display: none; }
+
+/* ==========================================================================
+   Hero — carte blanc cassé, silhouette qui en déborde
+   ========================================================================== */
+
+.hero { position: relative; margin-top: var(--espace-hero); }
+
+.hero-carte {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  gap: 24px;
+  padding: clamp(24px, 5vh, 52px) 56px 0;
+  background: var(--carte);
+  box-shadow: var(--ombre);
+}
+
+/* deux croix pâles dans la carte, comme sur la maquette */
+.hero-carte::before, .hero-carte::after {
+  content: ""; position: absolute; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-30 -30 60 60'%3E%3Cg fill='%23E4ECF6'%3E%3Crect x='-9' y='-30' width='18' height='60' rx='7'/%3E%3Crect x='-30' y='-9' width='60' height='18' rx='7'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat;
+}
+.hero-carte::before { width: 64px; height: 64px; top: 20px; left: 56%; }
+.hero-carte::after { width: 48px; height: 48px; top: 104px; left: 52%; }
+
+.hero-texte { position: relative; z-index: 2; display: flex; flex-direction: column; padding-bottom: clamp(24px, 5vh, 48px); }
+
+.hero-titre {
+  margin: 0;
+  font: 700 clamp(22px, min(2.3vw, 4.1vh), 34px)/1.18 var(--titres);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--bleu-titre);
+  hyphens: none;
+}
+
+.hero-intro { margin: clamp(14px, 3vh, 28px) 0 0; max-width: 30em; font-size: clamp(14px, min(1.15vw, 2.2vh), 17px); font-weight: 500; line-height: 1.55; }
+
+.hero-invite {
+  display: flex; flex-direction: column; align-items: center;
+  align-self: flex-end;
+  margin: auto 0 0; padding-top: clamp(16px, 4.5vh, 44px);
+  font-family: var(--titres); color: var(--bleu-titre); text-align: center; line-height: 1.15;
+}
+.invite-haut, .invite-bas { font-size: clamp(16px, 2.8vh, 22px); font-weight: 500; }
+.invite-fort {
+  display: flex; align-items: center; gap: .55em;
+  margin: 6px 0 4px;
+  font-size: clamp(22px, 4.2vh, 32px); font-weight: 700; letter-spacing: .07em; white-space: nowrap;
+}
+.chevrons { flex: none; width: 1.8em; height: .9em; animation: glisse 1.8s ease-in-out infinite; }
+
+@keyframes glisse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(7px); }
+}
+
+/* ---------- la carte interactive ---------- */
+
+.carte { position: relative; align-self: end; margin-bottom: -28px; padding-top: 10px; }
+
+.carte-scene { position: relative; z-index: 2; height: var(--corps-h); margin: 0 auto; aspect-ratio: 111 / 284; }
+.carte-corps { display: block; width: 100%; height: 100%; }
+
+.carte-legende {
+  position: absolute; z-index: 3; top: 4px; left: -8px; margin: 0;
+  display: flex; flex-direction: column; gap: 2px;
+  font: 600 clamp(16px, 2.6vh, 20px)/1.3 var(--titres);
+}
+.legende { display: flex; align-items: center; gap: 14px; }
+.legende::before { content: ""; width: 10px; height: 10px; border-radius: 50%; }
+.legende-maladie { color: var(--corail-titre); }
+.legende-maladie::before { background: var(--corail); }
+.legende-trauma { color: var(--bleu-titre); }
+.legende-trauma::before { background: var(--bleu); }
+
+/* formes en dégradé animées derrière le personnage */
+.carte-formes { position: absolute; inset: 8% -6% 6% -10%; z-index: 1; pointer-events: none; }
+.forme {
+  position: absolute; display: block;
+  background-size: 220% 220%;
+  opacity: .85;
+  animation: morphe 16s ease-in-out infinite alternate, teinte 11s ease-in-out infinite alternate;
+}
+.forme-bleue {
+  left: 2%; top: 0; width: 72%; height: 80%;
+  background-image: linear-gradient(150deg, #F4F8FD 0%, #E0EBF8 40%, #CBDDF2 68%, #EEF4FB 100%);
+  border-radius: 64% 36% 58% 42% / 38% 55% 45% 62%;
+}
+.forme-peche {
+  right: -4%; top: 30%; width: 66%; height: 68%;
+  background-image: linear-gradient(200deg, #FDF6F3 0%, #F9E5DE 42%, #F3D2C6 68%, #FBEEE9 100%);
+  border-radius: 45% 55% 40% 60% / 55% 45% 55% 45%;
+  animation-duration: 19s, 13s;
+  animation-delay: -6s, -3s;
+}
+.forme-goutte {
+  left: 0; top: 50%; width: 17%; height: 22%;
+  background-image: linear-gradient(180deg, #EDF3FB, #DAE6F5, #EDF3FB);
+  border-radius: 50% 50% 45% 55% / 60% 60% 40% 40%;
+  animation-duration: 12s, 9s;
+  animation-delay: -4s, -2s;
+}
+
+@keyframes morphe {
+  0%   { border-radius: 64% 36% 58% 42% / 38% 55% 45% 62%; transform: translate(0, 0) rotate(0deg) scale(1); }
+  33%  { border-radius: 36% 64% 30% 70% / 62% 34% 66% 38%; transform: translate(12px, -16px) rotate(7deg) scale(1.05); }
+  66%  { border-radius: 70% 30% 52% 48% / 32% 68% 30% 70%; transform: translate(-14px, 10px) rotate(-6deg) scale(.96); }
+  100% { border-radius: 44% 56% 70% 30% / 56% 30% 70% 44%; transform: translate(8px, 14px) rotate(4deg) scale(1.03); }
+}
+@keyframes teinte {
+  from { background-position: 0% 30%; }
+  to   { background-position: 100% 70%; }
+}
+
+/* points de douleur */
+.point {
+  position: absolute; left: var(--x); top: var(--y);
+  width: 32px; height: 32px; margin: -16px 0 0 -16px; padding: 0;
+  border: 0; background: none; cursor: pointer;
+}
+.point::before {
+  content: ""; position: absolute; inset: 9px; border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, .9);
+  transition: transform .2s ease;
+}
+.point::after {
+  content: ""; position: absolute; inset: 9px; border-radius: 50%;
+  animation: pouls 2.6s ease-out infinite;
+}
+.point-trauma::before { background: var(--marine); }
+.point-trauma::after { border: 2px solid var(--marine); }
+.point-maladie::before { background: var(--corail); }
+.point-maladie::after { border: 2px solid var(--corail); animation-delay: -1.3s; }
+.point:hover::before, .point.est-actif::before { transform: scale(1.45); }
+.point.est-actif::before { box-shadow: 0 0 0 3px var(--blanc), 0 4px 12px rgba(39, 72, 122, .4); }
+.point:focus-visible { outline: 3px solid var(--marine); outline-offset: 2px; border-radius: 50%; }
+
+@keyframes pouls {
+  from { transform: scale(1); opacity: .7; }
+  to   { transform: scale(2.6); opacity: 0; }
+}
+
+/* fiches : toutes présentes dans la page, le script bascule .est-active */
+.fiche {
+  position: absolute; z-index: 5;
+  left: calc(50% + var(--corps-h) * .2 + 6px);
+  /* calée sur le haut de la silhouette, ou sur ses pieds pour les zones basses :
+     elle reste dans la hauteur visible, jamais sous la ligne de flottaison */
+  top: 0;
+  width: 300px;
+  padding: 18px 20px 20px;
+  background: var(--blanc);
+  box-shadow: var(--ombre);
+  display: none;
+}
+.fiche-basse { top: auto; bottom: 0; }
+.fiche.est-active { display: block; animation: apparition .3s ease; }
+
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.fiche-fermer {
+  position: absolute; top: 8px; right: 10px;
+  width: 34px; height: 34px; border: 0; background: none; cursor: pointer;
+  font-size: 26px; line-height: 1; color: var(--texte);
+}
+.fiche-titre { margin: 0; font: 700 18px/1.2 var(--titres); letter-spacing: .06em; text-transform: uppercase; color: var(--bleu-titre); }
+.fiche-accroche { margin: 6px 26px 2px 0; font-size: 14px; font-weight: 500; line-height: 1.4; }
+/* point bleu : volet traumatisme seul ; point corail : volet maladie seul ; tuile : les deux */
+.fiche.vue-trauma .bloc-maladie, .fiche.vue-maladie .bloc-trauma { display: none; }
+.fiche-bloc + .fiche-bloc { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--trait); }
+.fiche-etiquette {
+  display: flex; align-items: center; gap: 8px; margin: 10px 0 2px;
+  font: 700 13px/1.2 var(--titres); letter-spacing: .08em; text-transform: uppercase;
+}
+.fiche-etiquette::before { content: ""; width: 9px; height: 9px; border-radius: 50%; }
+.bloc-trauma .fiche-etiquette { color: var(--bleu-texte); }
+.bloc-trauma .fiche-etiquette::before { background: var(--marine); }
+.bloc-maladie .fiche-etiquette { color: var(--corail-texte); }
+.bloc-maladie .fiche-etiquette::before { background: var(--corail); }
+.fiche-bloc .fiche-accroche { margin: 4px 0 8px; }
+.fiche-bloc ul { list-style: none; margin: 0; padding: 0; }
+.fiche-bloc li { position: relative; padding-left: 16px; font-size: 13.5px; line-height: 1.35; margin-bottom: 2px; }
+.fiche-bloc li::before { content: ""; position: absolute; left: 2px; top: .45em; width: 8px; height: 8px; border-radius: 50%; }
+.bloc-trauma li::before { background: var(--marine); }
+.bloc-maladie li::before { background: var(--corail); }
+.fiche .bouton { margin-top: 14px; width: 100%; padding: 11px 12px; font-size: 13.5px; letter-spacing: .04em; white-space: nowrap; }
+
+/* ==========================================================================
+   Où avez-vous mal ? — tuiles posées sur le fond
+   ========================================================================== */
+
+.zones { margin-top: 110px; }
+
+.zones-tete { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 40px; }
+.zones .titre-section { color: var(--marine); font-size: clamp(24px, 2.6vw, 36px); }
+.zones-chapo { margin: 0; max-width: 30em; font-size: 16px; font-weight: 500; color: var(--marine); }
+
+.zones-grille { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 16px; list-style: none; margin: 0; padding: 0; }
+
+.zone {
+  display: flex; flex-direction: column; gap: 14px; height: 100%;
+  padding: 12px 12px 18px;
+  background: var(--carte); box-shadow: var(--ombre-douce);
+  text-decoration: none;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.zone:hover { transform: translateY(-5px); box-shadow: var(--ombre); }
+.zone-visuel {
+  position: relative; display: block; overflow: hidden; aspect-ratio: 1;
+  background: radial-gradient(circle at 50% 45%, #F4F8FC 0, var(--bleu-pale) 75%);
+}
+.zone-visuel img {
+  position: absolute; max-width: none;
+  width: calc(var(--z) * 100%);
+  left: calc(50% - var(--cx) * var(--z) * 100% / 435.7);
+  top: calc(50% - var(--cy) * var(--z) * 100% / 435.7);
+}
+.zone-nom { padding-inline: 4px; font: 700 17px/1.2 var(--titres); letter-spacing: .03em; color: var(--marine); }
+/* deux liens directs par vignette : bleu vers Traumatologie, corail vers Maladies */
+.zone-liens { display: grid; margin-top: auto; padding-inline: 4px; border-top: 1px solid var(--trait); }
+.zone-liens .lien-fleche { gap: 8px; padding: 10px 0 0; font-size: 13.5px; letter-spacing: .01em; text-transform: none; }
+.zone-liens .lien-fleche + .lien-fleche { padding-top: 6px; }
+.zone-liens .lien-fleche::after { display: none; }   /* vignettes étroites : le point de couleur suffit */
+.zone-liens .lien-fleche:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* ==========================================================================
+   Parcours — grande carte, photo réelle qui déborde
+   ========================================================================== */
+
+.parcours { margin-top: 170px; }
+
+.parcours-carte {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 56px; align-items: start;
+  padding: 0 64px 64px;
+  background: var(--carte); box-shadow: var(--ombre);
+}
+
+.parcours-photo { margin: -80px 0 40px -104px; }
+.parcours-photo img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; box-shadow: var(--ombre); }
+
+.parcours-intro p { margin: 20px 0 28px; font-size: 16px; font-weight: 500; max-width: 26em; }
+
+.parcours-cartes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; padding-top: 64px; }
+.carte-service {
+  display: block; padding: 26px 24px 28px;
+  background: var(--blanc); box-shadow: var(--ombre-douce);
+  text-decoration: none; color: var(--texte);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.carte-service:nth-child(even) { transform: translateY(56px); }
+.carte-service:hover { transform: translateY(-4px); box-shadow: var(--ombre); }
+.carte-service:nth-child(even):hover { transform: translateY(52px); }
+.carte-service-icone { display: grid; place-items: center; width: 52px; height: 52px; background: var(--bleu-pale); color: var(--marine); }
+.carte-service h3 { margin: 16px 0 8px; font: 700 18px/1.2 var(--titres); letter-spacing: .06em; text-transform: uppercase; color: var(--marine); }
+.carte-service p { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.5; }
+
+/* ==========================================================================
+   Pied de page — bandeau marine
+   ========================================================================== */
+
+.pied { margin-top: 150px; padding-block: 44px 26px; background: var(--marine); color: var(--blanc); font-size: 15px; }
+
+.pied-grille { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px; }
+.pied-contact p { margin: 0; }
+.pied-titre { font: 700 17px/1.4 var(--titres); letter-spacing: .08em; text-transform: uppercase; }
+.pied a { text-decoration: none; }
+.pied a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.pied-liste { display: flex; flex-wrap: wrap; align-items: center; list-style: none; margin: 0; padding: 0; text-transform: uppercase; letter-spacing: .04em; }
+.pied-liste li { display: flex; align-items: center; }
+.pied-liste li + li::before { content: ""; width: 1.5px; height: 18px; margin-inline: 18px; background: currentColor; opacity: .6; }
+
+.pied-legal {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 32px;
+  margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, .25);
+  font-size: 13px;
+}
+.pied-legal p { margin: 0; opacity: .85; }
+
+/* ==========================================================================
+   Pages intérieures — même registre : cartes blanc cassé, photos qui débordent
+   ========================================================================== */
+
+.menu-liste a[aria-current="page"] { font-weight: 600; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+
+/* ---------- en-tête de page ---------- */
+
+.page-entete { margin-top: var(--espace-hero); }
+.page-entete-carte {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 56px; align-items: center;
+  padding: 48px 0 52px 56px;
+  background: var(--carte); box-shadow: var(--ombre);
+}
+
+.ariane { margin-bottom: 22px; font-size: 13px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; color: var(--bleu-texte); }
+.ariane ol { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.ariane li + li::before { content: "›"; margin-right: 8px; }
+.ariane a { text-decoration: none; }
+.ariane a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.ariane [aria-current] { color: var(--texte); }
+
+.page-titre {
+  margin: 0;
+  font: 700 clamp(30px, 3.6vw, 50px)/1.1 var(--titres);
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--bleu-titre);
+}
+.page-chapo { margin: 22px 0 0; max-width: 32em; font-size: 18px; font-weight: 500; line-height: 1.55; }
+
+.sommaire { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 30px 0 0; padding: 0; }
+.sommaire a {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 11px 16px; border: 1.5px solid var(--trait); background: var(--blanc);
+  font: 600 13.5px/1.2 var(--police); letter-spacing: .05em; text-transform: uppercase;
+  color: var(--marine); text-decoration: none;
+  transition: border-color .2s;
+}
+.sommaire a::after { content: "↓"; font-size: 15px; }
+.sommaire a:hover { border-color: var(--marine); }
+
+/* la photo sort de la carte par le haut et par la droite, comme sur l'accueil */
+.page-entete-photo { align-self: stretch; margin: -84px -44px -24px 0; }
+.page-entete-photo img { display: block; width: 100%; height: 100%; min-height: 320px; object-fit: cover; box-shadow: var(--ombre); }
+
+.section-carte, .organisation { scroll-margin-top: 24px; }
+
+/* ---------- présentation ---------- */
+
+.section-carte { margin-top: 136px; }
+.section-carte-fond { display: flow-root; padding: 0 56px 56px; background: var(--carte); box-shadow: var(--ombre); }   /* flow-root : la marge négative de la photo ne remonte pas toute la carte */
+
+/* photo en bandeau qui sort de la carte par le haut et par les côtés, puis titre | texte */
+.presentation-photo { margin: -72px -88px 48px; }
+.presentation-photo img { display: block; width: 100%; aspect-ratio: 21 / 8; object-fit: cover; object-position: 50% 35%; box-shadow: var(--ombre); }
+.presentation { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+.presentation-texte p { margin: 0; font-size: 17px; font-weight: 500; }
+.presentation-texte p + p { margin-top: 16px; }
+
+.piliers {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;
+  list-style: none; margin: 48px 0 0; padding: 36px 0 0;
+  border-top: 1px solid var(--trait);
+}
+.pilier h3 {
+  display: flex; align-items: center; gap: 10px; margin: 0 0 10px;
+  font: 700 18px/1.2 var(--titres); letter-spacing: .08em; text-transform: uppercase;
+}
+.pilier h3::before { content: ""; width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.pilier p { margin: 0; font-size: 15px; font-weight: 500; line-height: 1.55; }
+.pilier-trauma h3 { color: var(--bleu-texte); }
+.pilier-trauma h3::before { background: var(--marine); }
+.pilier-maladie h3 { color: var(--corail-texte); }
+.pilier-maladie h3::before { background: var(--corail); }
+.pilier-reeducation h3 { color: var(--marine); }
+.pilier-reeducation h3::before { background: var(--bleu); }
+
+/* ---------- organisation interne ---------- */
+
+.organisation { margin-top: 120px; }
+.organisation-tete { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 36px; }
+.organisation .titre-section { color: var(--marine); font-size: clamp(24px, 2.6vw, 36px); }
+.organisation-chapo { margin: 0; max-width: 30em; font-size: 16px; font-weight: 500; color: var(--marine); }
+
+.equipe {
+  display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+  background: var(--carte); box-shadow: var(--ombre);
+}
+.equipe + .equipe { margin-top: 48px; }
+.equipe-inverse { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+.equipe-inverse .equipe-photo { order: 2; }
+.equipe-photo { margin: 0; }
+.equipe-photo img { display: block; width: 100%; height: 100%; min-height: 280px; object-fit: cover; }
+.equipe-contenu { padding: 44px 48px; }
+.equipe-titre { margin: 0 0 22px; font: 700 22px/1.2 var(--titres); letter-spacing: .1em; text-transform: uppercase; color: var(--bleu-titre); }
+
+.roles { display: grid; gap: 14px; list-style: none; margin: 0; padding: 0; }
+.role {
+  display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 18px;
+  padding: 20px; background: var(--blanc); box-shadow: var(--ombre-douce);
+}
+.role-icone { display: grid; place-items: center; width: 52px; height: 52px; background: var(--bleu-pale); color: var(--marine); }
+.role h4 { margin: 2px 0 6px; font: 700 17px/1.2 var(--titres); letter-spacing: .06em; text-transform: uppercase; color: var(--marine); }
+.role p { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.5; }
+
+.role-noms { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); gap: 12px; list-style: none; margin: 4px 0 0; padding: 0; }
+.medecin { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--carte); border-left: 3px solid var(--marine); }
+.medecin .medecin-nom { margin: 0 0 6px; font: 700 15px/1.25 var(--titres); letter-spacing: .02em; color: var(--marine); }
+.medecin .medecin-nom small { display: block; margin-top: 2px; font: 500 12.5px/1.3 var(--police); letter-spacing: .03em; text-transform: uppercase; color: var(--bleu-texte); }
+.medecin a { display: block; font-size: 13px; font-weight: 500; line-height: 1.55; color: var(--texte); text-decoration: none; overflow-wrap: break-word; }   /* les adresses se coupent au <wbr> avant le @ */
+.medecin a:hover { color: var(--marine); text-decoration: underline; text-underline-offset: 3px; }
+.monogramme {
+  display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--marine); color: var(--blanc);
+  font: 700 13px/1 var(--titres); letter-spacing: .05em;
+}
+
+/* ---------- appel ---------- */
+
+.appel { margin-top: 110px; }
+.appel-carte {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 48px;
+  padding: 44px 56px;
+  background: var(--marine); color: var(--blanc); box-shadow: var(--ombre);
+}
+.appel-titre { margin: 0; font: 700 clamp(20px, 2.1vw, 28px)/1.2 var(--titres); letter-spacing: .08em; text-transform: uppercase; }
+.appel-carte p { margin: 8px 0 0; font-size: 16px; font-weight: 500; opacity: .9; }
+.appel-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+.appel-tel { font: 700 22px/1.2 var(--titres); letter-spacing: .05em; color: var(--blanc); text-decoration: none; }
+.appel-tel:hover { text-decoration: underline; text-underline-offset: 5px; }
+.bouton-blanc { background: var(--blanc); color: var(--marine); }
+.bouton-blanc:hover { background: var(--bleu-pale); }
+
+.page-interieure .pied { margin-top: 120px; }
+
+/* ==========================================================================
+   Traumatologie (et bientôt Maladies) — un onglet par secteur
+   ========================================================================== */
+
+/* repère de couleur, comme la légende de la carte */
+.page-repere { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 10px; font: 700 14px/1.2 var(--titres); letter-spacing: .1em; text-transform: uppercase; }
+.page-repere::before { content: ""; width: 11px; height: 11px; border-radius: 50%; }
+.repere-trauma { color: var(--bleu-texte); }
+.repere-trauma::before { background: var(--marine); }
+.repere-maladie { color: var(--corail-texte); }
+.repere-maladie::before { background: var(--corail); }
+
+/* couleur d'accent : marine pour les traumatismes (points bleus), corail pour les maladies (points corail) */
+.secteurs, .page-entete { --accent: var(--marine); --accent-texte: var(--bleu-texte); --accent-titre: var(--bleu-titre); }
+.page-maladies .secteurs, .page-maladies .page-entete { --accent: var(--corail); --accent-texte: var(--corail-texte); --accent-titre: var(--corail-titre); }
+.page-maladies .page-titre { color: var(--accent-titre); }
+
+.secteurs { margin-top: 96px; scroll-margin-top: 16px; }
+
+.secteurs-onglets { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+.secteur-onglet {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 12px 8px 14px; border-top: 4px solid transparent;
+  background: rgba(249, 250, 247, .55);
+  font: 700 14px/1.2 var(--titres); letter-spacing: .03em; text-align: center;
+  color: var(--marine); text-decoration: none;
+  transition: background-color .2s;
+}
+.secteur-onglet .zone-visuel { width: 64px; }
+.secteur-onglet:hover { background: rgba(249, 250, 247, .85); }
+.secteur-onglet.est-actif { background: var(--carte); border-top-color: var(--accent); }
+.secteur-onglet:focus-visible { outline: 3px solid var(--marine); outline-offset: -3px; }
+
+/* sans script (et dans l'éditeur), tous les secteurs se suivent ; avec le script, seul l'actif s'affiche */
+.secteur { padding: 56px; background: var(--carte); box-shadow: var(--ombre); scroll-margin-top: 16px; }
+.secteur + .secteur { margin-top: 40px; }
+.secteurs.avec-onglets .secteur { display: none; }
+.secteurs.avec-onglets .secteur.est-actif { display: block; margin-top: 0; animation: apparition .3s ease; }
+
+.secteur-tete { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 48px; align-items: center; }
+.secteur-titre { margin: 0; font: 700 clamp(28px, 3vw, 42px)/1.1 var(--titres); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-titre); }
+.secteur-accroche { margin: 14px 0 0; font: 600 20px/1.35 var(--titres); color: var(--marine); }
+.secteur-intro { margin: 12px 0 0; max-width: 36em; font-size: 16px; font-weight: 500; }
+.secteur-schema { margin: 0; }
+.secteur-schema .zone-visuel { width: 100%; box-shadow: var(--ombre-douce); }
+.secteur-schema figcaption { margin-top: 10px; font-size: 13px; font-weight: 500; text-align: center; color: var(--bleu-texte); }
+
+.secteur-soustitre {
+  display: flex; align-items: center; gap: 16px; margin: 52px 0 20px;
+  font: 700 18px/1.2 var(--titres); letter-spacing: .1em; text-transform: uppercase; color: var(--marine);
+}
+.secteur-soustitre::after { content: ""; flex: 1; height: 1px; background: var(--trait); }
+
+.affections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; list-style: none; margin: 0; padding: 0; }
+.affection { padding: 22px 22px 20px; border-top: 3px solid var(--accent); background: var(--blanc); box-shadow: var(--ombre-douce); }
+.affection h4 { margin: 0 0 10px; font: 700 17px/1.25 var(--titres); letter-spacing: .03em; color: var(--accent-texte); }
+.affection p { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.55; }
+.affection .causes, .affection .symptomes { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--trait); font-size: 13.5px; }
+.causes strong, .symptomes strong { display: block; margin-bottom: 4px; font: 700 12px/1.2 var(--police); letter-spacing: .06em; text-transform: uppercase; color: var(--marine); }
+
+/* parcours en quatre étapes numérotées, reliées par un trait */
+.etapes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; list-style: none; margin: 0; padding: 0; counter-reset: etape; }
+.etapes li { position: relative; padding-top: 58px; counter-increment: etape; }
+.etapes li::before {
+  content: counter(etape); position: absolute; top: 0; left: 0;
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%;
+  background: var(--accent); color: var(--blanc); font: 700 17px/1 var(--titres);
+}
+.etapes li::after { content: ""; position: absolute; top: 20px; left: 54px; right: -12px; height: 2px; background: var(--trait); }
+.etapes li:last-child::after { display: none; }
+.etapes h4 { margin: 0 0 6px; font: 700 16px/1.25 var(--titres); letter-spacing: .05em; text-transform: uppercase; color: var(--marine); }
+.etapes p { margin: 0; font-size: 14.5px; font-weight: 500; line-height: 1.5; }
+
+.solutions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.solution { padding: 22px 24px; background: var(--blanc); box-shadow: var(--ombre-douce); }
+.solution h4 { margin: 0 0 12px; font: 700 16px/1.2 var(--titres); letter-spacing: .06em; text-transform: uppercase; color: var(--accent-texte); }
+.solution ul { display: grid; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.solution li { position: relative; padding-left: 20px; font-size: 14.5px; font-weight: 500; line-height: 1.45; }
+.solution li::before { content: ""; position: absolute; left: 2px; top: .5em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+
+.secteur-suite { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--trait); }
+.lien-fleche { display: inline-flex; align-items: center; gap: 8px; font: 600 14px/1.2 var(--police); letter-spacing: .04em; text-transform: uppercase; color: var(--marine); text-decoration: none; }
+.lien-fleche::after { content: "→"; transition: transform .2s; }
+.lien-fleche:hover::after { transform: translateX(4px); }
+.lien-maladie { color: var(--corail-texte); }
+.lien-maladie::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--corail); }
+.lien-trauma { color: var(--bleu-texte); }
+.lien-trauma::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--marine); }
+
+/* ==========================================================================
+   Mouvement réduit
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .forme, .chevrons, .point::after { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ==========================================================================
+   Tablette et mobile
+   ========================================================================== */
+
+/* sous 1440 px (barre de défilement comprise), la fiche ne peut plus déborder de la carte sans sortir de l'écran */
+@media (max-width: 1439px) {
+  /* elle passe à gauche du personnage, sur l'invitation « Points de douleur », sans masquer la silhouette */
+  .fiche { left: auto; right: calc(50% + var(--corps-h) * .2 + 6px); }
+}
+
+@media (max-width: 1180px) {
+  .menu-liste li + li::before { margin-inline: 14px; }
+  .menu-liste a { font-size: 14px; }
+  .hero-carte { grid-template-columns: minmax(0, 1fr) 360px; padding: 56px 40px 0 48px; }
+  .zones-grille { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .parcours-carte { padding-inline: 40px; }
+  .parcours-photo { margin-left: -64px; }
+}
+
+@media (max-width: 900px) {
+  .entete-inner { align-items: center; padding-block: 20px; }
+  .marque-logo { width: 116px; }
+
+  .burger {
+    display: grid; place-items: center; width: 48px; height: 48px;
+    border: 0; background: transparent; color: var(--marine); cursor: pointer;
+  }
+  .burger-barres, .burger-barres::before, .burger-barres::after {
+    display: block; width: 26px; height: 2.5px; background: currentColor; position: relative;
+  }
+  .burger-barres::before, .burger-barres::after { content: ""; position: absolute; left: 0; }
+  .burger-barres::before { top: -8px; }
+  .burger-barres::after { top: 8px; }
+
+  .menu {
+    display: none;
+    position: absolute; left: 16px; right: 16px; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 8px 20px 20px;
+    background: var(--carte); box-shadow: var(--ombre);
+  }
+  .entete.est-ouvert .menu { display: flex; }
+  .menu-liste { flex-direction: column; align-items: stretch; }
+  .menu-liste li + li::before { display: none; }
+  .menu-liste a { display: block; padding: 13px 0; border-bottom: 1px solid var(--trait); font-size: 16px; }
+  .menu-pro { margin-top: 16px; }
+
+  .hero-carte { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 36px 22px 0; }
+  .hero-carte::before, .hero-carte::after { display: none; }
+  .hero-texte { padding-bottom: 12px; }
+  .hero-titre { font-size: clamp(21px, 6vw, 34px); letter-spacing: .07em; }
+  .hero-intro { margin-top: 18px; font-size: 15px; }
+  .hero-invite { align-self: center; margin-top: 30px; }
+  .invite-haut, .invite-bas { font-size: 18px; }
+  .invite-fort { font-size: clamp(20px, 6.4vw, 26px); letter-spacing: .03em; white-space: normal; }
+
+  .hero { overflow-x: clip; }   /* les formes animées grossissent : elles ne doivent pas élargir la page */
+  .carte { width: min(100%, 380px); margin: 18px auto -28px; padding-top: 64px; }
+  .carte-formes { inset: 14% -2% 4% -4%; }
+  .carte-scene { height: 400px; }
+  .carte-legende { top: 0; left: 0; flex-direction: row; gap: 20px; font-size: 17px; }
+  .fiche, .fiche-basse { position: relative; left: auto; right: auto; top: auto; bottom: auto; width: auto; margin: 44px 0 0; }
+
+  .zones { margin-top: 64px; }
+  .zones-tete { grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 26px; }
+  .zones-grille { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+  .parcours { margin-top: 110px; }
+  .parcours-carte { grid-template-columns: minmax(0, 1fr); gap: 0; padding: 0 22px 32px; }
+  .parcours-photo { margin: -56px -8px 28px; }
+  .parcours-cartes { grid-template-columns: minmax(0, 1fr); padding-top: 32px; }
+  .carte-service:nth-child(even), .carte-service:nth-child(even):hover { transform: none; }
+
+  .pied { margin-top: 80px; }
+}
+
+/* ---------- pages intérieures : tablette et mobile ---------- */
+
+@media (max-width: 1180px) {
+  .page-entete-photo { margin-right: -24px; }
+  .presentation-photo { margin-inline: -72px; }
+  .equipe, .equipe-inverse { grid-template-columns: minmax(0, 1fr); }
+  .equipe-inverse .equipe-photo { order: 0; }
+  .equipe-photo img { aspect-ratio: 21 / 9; min-height: 0; }
+}
+
+@media (max-width: 900px) {
+  .page-entete-carte { grid-template-columns: minmax(0, 1fr); gap: 28px; padding: 28px 22px 0; }
+  .page-entete-photo { margin: 0 -8px -32px; }
+  .page-entete-photo img { min-height: 0; aspect-ratio: 3 / 2; }
+  .page-chapo { font-size: 16px; }
+  .sommaire a { font-size: 12.5px; padding: 10px 12px; }
+
+  .section-carte { margin-top: 124px; }   /* les deux photos débordent l'une vers l'autre */
+  .section-carte-fond { padding: 0 22px 28px; }
+  .presentation { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .presentation-texte p { font-size: 16px; }
+  .presentation-photo { margin: -40px -30px 26px; }
+  .presentation-photo img { aspect-ratio: 16 / 9; }
+  .piliers { grid-template-columns: minmax(0, 1fr); gap: 22px; margin-top: 32px; padding-top: 26px; }
+
+  .organisation { margin-top: 72px; }
+  .organisation-tete { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 24px; }
+  .equipe + .equipe { margin-top: 28px; }
+  .equipe-contenu { padding: 24px 18px; }
+  .role { grid-template-columns: 44px minmax(0, 1fr); gap: 14px; padding: 16px; }
+  .role-icone { width: 44px; height: 44px; }
+
+  .appel { margin-top: 72px; }
+  .appel-carte { padding: 28px 22px; }
+  .page-interieure .pied { margin-top: 80px; }
+}
+/* ---------- traumatologie : tablette et mobile ---------- */
+
+@media (max-width: 1180px) {
+  .secteur-onglet { font-size: 12.5px; }
+  .secteur-onglet .zone-visuel { width: 54px; }
+  .etapes { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .etapes li:nth-child(2)::after { display: none; }
+}
+
+@media (max-width: 900px) {
+  .secteurs { margin-top: 64px; }
+  /* les onglets défilent horizontalement, sans élargir la page */
+  .secteurs-onglets {
+    display: flex; gap: 6px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: -16px; padding-inline: 16px; scrollbar-width: none;
+  }
+  .secteurs-onglets::-webkit-scrollbar { display: none; }
+  .secteur-onglet { flex: 0 0 92px; scroll-snap-align: start; }
+  .secteur-onglet .zone-visuel { width: 50px; }
+  .secteur { padding: 26px 20px; }
+  .secteur-tete { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .secteur-schema { max-width: 200px; }
+  .secteur-accroche { font-size: 18px; }
+  .secteur-soustitre { margin: 38px 0 16px; font-size: 16px; }
+  .affections, .solutions { grid-template-columns: minmax(0, 1fr); }
+  .etapes { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .etapes li { padding: 0 0 0 58px; min-height: 42px; }
+  .etapes li::after, .etapes li:nth-child(2)::after { display: block; top: 48px; bottom: -16px; left: 20px; right: auto; width: 2px; height: auto; }
+  .etapes li:last-child::after { display: none; }
+  .secteur-suite .bouton { width: 100%; }
+}

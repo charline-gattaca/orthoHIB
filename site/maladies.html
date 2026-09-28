@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Maladies — Orthopédie et traumatologie, Hôpital intercantonal de la Broye</title>
+  <meta name="description" content="Arthrose, tendinites, nerfs comprimés, déformations du pied : comprendre les maladies de l’appareil locomoteur, leurs symptômes et leurs traitements à l’HiB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page-interieure page-maladies">
+
+<header class="entete">
+  <div class="enveloppe entete-inner">
+    <a class="marque" href="index.html">
+      <img class="marque-logo" src="img/logo-hib.png" width="349" height="144" alt="HiB — Hôpital intercantonal de la Broye">
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger-barres" aria-hidden="true"></span><span class="sr">Menu</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <ul class="menu-liste">
+        <li><a href="le-service.html">Le service</a></li>
+        <li><a href="interventions.html">Interventions</a></li>
+        <li><a href="patients.html">Patients</a></li>
+        <li><a href="formations.html">Formations</a></li>
+      </ul>
+      <a class="bouton bouton-marine menu-pro" href="contacts-acces.html">Contacts &amp; accès</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ En-tête de page ============ -->
+  <section class="page-entete enveloppe">
+    <div class="page-entete-carte">
+      <div class="page-entete-texte">
+        <nav class="ariane" aria-label="Fil d’Ariane">
+          <ol><li><a href="index.html">Accueil</a></li><li><a href="index.html#carte">Carte interactive</a></li><li><span aria-current="page">Maladies</span></li></ol>
+        </nav>
+        <p class="page-repere repere-maladie">Maladie</p>
+        <h1 class="page-titre">Maladies</h1>
+        <p class="page-chapo">L’usure, l’inflammation ou une déformation&nbsp;: ici, la douleur s’installe peu à peu. Choisissez la zone concernée pour comprendre ce qui se passe, reconnaître les symptômes et découvrir les traitements possibles.</p>
+      </div>
+      <figure class="page-entete-photo">
+        <img src="img/genoux-protheses.jpg" width="1600" height="1065" alt="Modèles anatomiques de genoux et de prothèses">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ Secteurs : tous les panneaux sont dans la page, le script bascule .est-actif ============ -->
+  <section class="secteurs enveloppe" aria-label="Maladies par secteur">
+
+    <nav class="secteurs-onglets" aria-label="Choisir un secteur">
+      <a class="secteur-onglet" href="#epaule" data-secteur="epaule"><span class="zone-visuel" style="--cx:290;--cy:178;--z:4"><img src="img/squelette.svg" alt=""></span><span>Épaule</span></a>
+      <a class="secteur-onglet" href="#coude" data-secteur="coude"><span class="zone-visuel" style="--cx:78;--cy:305;--z:4"><img src="img/squelette.svg" alt=""></span><span>Coude</span></a>
+      <a class="secteur-onglet" href="#main" data-secteur="main"><span class="zone-visuel" style="--cx:360;--cy:432;--z:3.8"><img src="img/squelette.svg" alt=""></span><span>Main et poignet</span></a>
+      <a class="secteur-onglet" href="#hanche" data-secteur="hanche"><span class="zone-visuel" style="--cx:152;--cy:372;--z:3.3"><img src="img/squelette.svg" alt=""></span><span>Hanche</span></a>
+      <a class="secteur-onglet" href="#genou" data-secteur="genou"><span class="zone-visuel" style="--cx:174;--cy:592;--z:4"><img src="img/squelette.svg" alt=""></span><span>Genou</span></a>
+      <a class="secteur-onglet" href="#cheville" data-secteur="cheville"><span class="zone-visuel" style="--cx:180;--cy:768;--z:4.2"><img src="img/squelette.svg" alt=""></span><span>Cheville</span></a>
+      <a class="secteur-onglet" href="#pied" data-secteur="pied"><span class="zone-visuel" style="--cx:238;--cy:786;--z:4.2"><img src="img/squelette.svg" alt=""></span><span>Pied</span></a>
+    </nav>
+
+    <!-- ===== Épaule ===== -->
+    <article class="secteur" id="epaule" data-secteur="epaule">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Épaule</h2>
+          <p class="secteur-accroche">Une douleur qui s’installe, l’épaule qui se raidit ou vous réveille la nuit&nbsp;?</p>
+          <p class="secteur-intro">Avec les années ou à force de gestes répétés, les tendons et le cartilage de l’épaule s’abîment. La douleur arrive souvent peu à peu.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:290;--cy:178;--z:2.6"><img src="img/squelette.svg" alt="Schéma des os de l’épaule : clavicule, omoplate et tête de l’humérus"></span><figcaption>Clavicule, omoplate et tête de l’humérus</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Arthrose de l’épaule</h4><p>Le cartilage qui recouvre l’articulation s’use. Les os finissent par frotter l’un contre l’autre.</p><p class="symptomes"><strong>Symptômes</strong>Douleur et raideur, bras qui ne monte plus aussi haut qu’avant.</p></li>
+        <li class="affection"><h4>Épaule gelée (capsulite)</h4><p>L’enveloppe de l’articulation s’enflamme puis se rétracte. L’épaule se bloque peu à peu, puis guérit en général en quelques mois.</p><p class="symptomes"><strong>Symptômes</strong>Douleur intense au début, puis raideur dans tous les mouvements.</p></li>
+        <li class="affection"><h4>Tendinite calcifiante</h4><p>Un dépôt de calcium se forme dans un tendon de l’épaule et l’irrite.</p><p class="symptomes"><strong>Symptômes</strong>Douleur vive, parfois brutale, en levant le bras ou la nuit.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Nous écoutons votre histoire et examinons la mobilité et la force de l’épaule.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie&nbsp;; échographie ou IRM pour les tendons.</p></li>
+        <li><h4>Traitement</h4><p>D’abord sans opération&nbsp;: physiothérapie, antidouleurs, infiltration.</p></li>
+        <li><h4>Suivi</h4><p>Si la gêne persiste, nous discutons ensemble d’une opération.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Physiothérapie</li><li>Antidouleurs et anti-inflammatoires</li><li>Infiltration</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Réparation des tendons sous arthroscopie</li><li>Retrait des calcifications</li><li>Prothèse d’épaule en cas d’arthrose avancée</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#epaule">Traumatismes de l’épaule</a>
+      </div>
+    </article>
+
+    <!-- ===== Coude ===== -->
+    <article class="secteur" id="coude" data-secteur="coude">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Coude</h2>
+          <p class="secteur-accroche">Une douleur qui revient à chaque geste, des fourmillements dans les doigts&nbsp;?</p>
+          <p class="secteur-intro">Au coude, ce sont surtout les tendons et les nerfs qui souffrent des gestes répétés, au travail comme au sport.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:78;--cy:305;--z:2.6"><img src="img/squelette.svg" alt="Schéma des os du coude : humérus, radius et cubitus"></span><figcaption>Humérus, radius et cubitus</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Tennis-elbow (épicondylite)</h4><p>Les tendons attachés à la bosse extérieure du coude s’irritent à force d’être sollicités.</p><p class="symptomes"><strong>Symptômes</strong>Douleur à l’extérieur du coude en serrant, en portant ou en tournant la main.</p></li>
+        <li class="affection"><h4>Arthrose du coude</h4><p>Le cartilage s’use, souvent après une ancienne fracture ou des années de travail de force.</p><p class="symptomes"><strong>Symptômes</strong>Raideur, douleur, bras qui ne se tend plus complètement.</p></li>
+        <li class="affection"><h4>Nerf ulnaire comprimé</h4><p>Le nerf qui passe à l’intérieur du coude, celui qui fait si mal quand on s’y cogne, est comprimé.</p><p class="symptomes"><strong>Symptômes</strong>Fourmillements dans l’annulaire et l’auriculaire, main moins forte.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen du coude, des tendons et des nerfs.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie&nbsp;; échographie, IRM ou examen des nerfs (ENMG).</p></li>
+        <li><h4>Traitement</h4><p>D’abord repos relatif, attelle, physiothérapie ou infiltration.</p></li>
+        <li><h4>Suivi</h4><p>Une opération seulement si la gêne persiste malgré ces traitements.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Adapter ses gestes et ménager le coude</li><li>Physiothérapie et étirements</li><li>Infiltration, attelle de nuit</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Libération des tendons</li><li>Libération ou déplacement du nerf</li><li>Nettoyage de l’articulation sous arthroscopie</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#coude">Traumatismes du coude</a>
+      </div>
+    </article>
+
+    <!-- ===== Main et poignet ===== -->
+    <article class="secteur" id="main" data-secteur="main">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Main et poignet</h2>
+          <p class="secteur-accroche">Des fourmillements la nuit, un doigt qui accroche, le pouce douloureux&nbsp;?</p>
+          <p class="secteur-intro">La main fait des milliers de gestes par jour. Avec le temps, les tendons, les nerfs et les petites articulations peuvent s’user ou s’irriter.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:360;--cy:432;--z:2.4"><img src="img/squelette.svg" alt="Schéma des os du poignet et de la main"></span><figcaption>Radius, os du carpe et doigts</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Syndrome du tunnel carpien</h4><p>Le nerf médian est comprimé à son passage dans le poignet.</p><p class="symptomes"><strong>Symptômes</strong>Fourmillements du pouce au majeur, souvent la nuit, maladresse.</p></li>
+        <li class="affection"><h4>Doigt à ressaut</h4><p>Le tendon qui plie le doigt coince dans sa gaine, puis se libère d’un coup.</p><p class="symptomes"><strong>Symptômes</strong>Doigt qui se bloque plié puis «&nbsp;saute&nbsp;», douleur à la base du doigt.</p></li>
+        <li class="affection"><h4>Arthrose du pouce</h4><p>Le cartilage à la base du pouce s’use. C’est très fréquent après 50 ans.</p><p class="symptomes"><strong>Symptômes</strong>Douleur pour ouvrir un bocal, tourner une clé ou pincer.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen de la main, de la force et de la sensibilité des doigts.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie&nbsp;; examen des nerfs (ENMG) pour le tunnel carpien.</p></li>
+        <li><h4>Traitement</h4><p>Attelle de nuit, ergothérapie, infiltration.</p></li>
+        <li><h4>Suivi</h4><p>Une petite opération, souvent en ambulatoire, si la gêne persiste.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Attelle de repos</li><li>Ergothérapie et conseils pour protéger la main</li><li>Infiltration</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Libération du nerf au poignet</li><li>Libération du tendon du doigt</li><li>Chirurgie de l’arthrose du pouce</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#main">Traumatismes de la main et du poignet</a>
+      </div>
+    </article>
+
+    <!-- ===== Hanche ===== -->
+    <article class="secteur" id="hanche" data-secteur="hanche">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Hanche</h2>
+          <p class="secteur-accroche">Une douleur à l’aine en marchant, du mal à mettre vos chaussettes&nbsp;?</p>
+          <p class="secteur-intro">La hanche porte le poids du corps à chaque pas. Quand son cartilage s’use, la marche devient douloureuse.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:152;--cy:372;--z:2.2"><img src="img/squelette.svg" alt="Schéma de la hanche : bassin et tête du fémur"></span><figcaption>Bassin et tête du fémur</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Arthrose de la hanche (coxarthrose)</h4><p>Le cartilage de la hanche s’use peu à peu. C’est la maladie la plus fréquente de la hanche.</p><p class="symptomes"><strong>Symptômes</strong>Douleur à l’aine ou à la cuisse, boiterie, raideur au lever.</p></li>
+        <li class="affection"><h4>Nécrose de la tête du fémur</h4><p>La tête du fémur ne reçoit plus assez de sang et s’abîme.</p><p class="symptomes"><strong>Symptômes</strong>Douleur à l’aine, parfois soudaine, puis gêne à la marche.</p></li>
+        <li class="affection"><h4>Conflit de hanche</h4><p>La forme de l’os fait frotter le fémur contre le bassin, surtout chez l’adulte jeune et sportif.</p><p class="symptomes"><strong>Symptômes</strong>Douleur à l’aine en position assise prolongée ou en pliant la hanche.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen de votre marche et de la mobilité de la hanche.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie&nbsp;; IRM ou scanner si nécessaire.</p></li>
+        <li><h4>Traitement</h4><p>Antidouleurs, physiothérapie, infiltration, activité physique adaptée.</p></li>
+        <li><h4>Suivi</h4><p>Une prothèse de hanche quand la douleur gêne trop la vie quotidienne.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Physiothérapie et activité physique adaptée</li><li>Antidouleurs, infiltration</li><li>Canne pour soulager la hanche</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Prothèse totale de hanche</li><li>Chirurgie du conflit de hanche</li><li>Traitement précoce de la nécrose</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#hanche">Traumatismes de la hanche</a>
+      </div>
+    </article>
+
+    <!-- ===== Genou ===== -->
+    <article class="secteur" id="genou" data-secteur="genou">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Genou</h2>
+          <p class="secteur-accroche">Il grince, gonfle ou fait mal avec le temps&nbsp;?</p>
+          <p class="secteur-intro">Le genou supporte de lourdes charges toute la vie. Son arthrose est très fréquente après 60 ans, et elle se soigne bien.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:174;--cy:592;--z:2.6"><img src="img/squelette.svg" alt="Schéma du genou : fémur, rotule et tibia"></span><figcaption>Fémur, rotule et tibia</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Arthrose du genou (gonarthrose)</h4><p>Le cartilage du genou s’use, sur tout le genou ou sur une partie seulement.</p><p class="symptomes"><strong>Symptômes</strong>Douleur en marchant ou dans les escaliers, genou gonflé, raideur.</p></li>
+        <li class="affection"><h4>Rotule instable</h4><p>La rotule sort de son rail et glisse sur le côté.</p><p class="symptomes"><strong>Symptômes</strong>Genou qui se dérobe, douleur à l’avant du genou.</p></li>
+        <li class="affection"><h4>Usure du ménisque</h4><p>Avec l’âge, le ménisque s’effiloche, sans qu’il y ait eu d’accident.</p><p class="symptomes"><strong>Symptômes</strong>Douleur d’un côté du genou, parfois gonflement.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen du genou, de l’axe de la jambe et de votre façon de marcher.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie debout&nbsp;; IRM si nécessaire.</p></li>
+        <li><h4>Traitement</h4><p>Physiothérapie, perte de poids si utile, antidouleurs, infiltration.</p></li>
+        <li><h4>Suivi</h4><p>Une prothèse partielle ou totale si la douleur persiste, posée avec l’aide du robot ROSA.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Physiothérapie et renforcement musculaire</li><li>Activité physique adaptée</li><li>Infiltration, genouillère</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Prothèse partielle ou totale, avec l’aide du robot ROSA</li><li>Correction de l’axe de la jambe (ostéotomie)</li><li>Stabilisation de la rotule</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#genou">Traumatismes du genou</a>
+      </div>
+    </article>
+
+    <!-- ===== Cheville ===== -->
+    <article class="secteur" id="cheville" data-secteur="cheville">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Cheville</h2>
+          <p class="secteur-accroche">Une cheville qui tourne souvent, qui fait mal ou qui se raidit&nbsp;?</p>
+          <p class="secteur-intro">Après des entorses à répétition ou une ancienne fracture, la cheville peut devenir instable, ou s’user.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:180;--cy:768;--z:2.8"><img src="img/squelette.svg" alt="Schéma de la cheville : tibia, péroné et os du pied"></span><figcaption>Tibia, péroné et os du pied</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Cheville instable</h4><p>Après plusieurs entorses, les ligaments se sont distendus et ne tiennent plus la cheville.</p><p class="symptomes"><strong>Symptômes</strong>Entorses à répétition, cheville qui lâche sur terrain irrégulier.</p></li>
+        <li class="affection"><h4>Arthrose de la cheville</h4><p>Le cartilage s’use, le plus souvent des années après une fracture.</p><p class="symptomes"><strong>Symptômes</strong>Douleur et gonflement à la marche, raideur.</p></li>
+        <li class="affection"><h4>Tendon d’Achille douloureux</h4><p>Le tendon s’épaissit et s’irrite à force d’être sollicité.</p><p class="symptomes"><strong>Symptômes</strong>Douleur à l’arrière du talon, surtout le matin et au démarrage.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen de la cheville, de sa stabilité et de votre marche.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie debout&nbsp;; IRM ou échographie.</p></li>
+        <li><h4>Traitement</h4><p>Physiothérapie, exercices d’équilibre, semelles, chevillère.</p></li>
+        <li><h4>Suivi</h4><p>Une opération si la cheville reste instable ou douloureuse.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Exercices d’équilibre et de renforcement</li><li>Chevillère ou semelles orthopédiques</li><li>Étirements, infiltration</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Reconstruction des ligaments</li><li>Nettoyage de l’articulation sous arthroscopie</li><li>Blocage (arthrodèse) ou prothèse de cheville</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#cheville">Traumatismes de la cheville</a>
+      </div>
+    </article>
+
+    <!-- ===== Pied ===== -->
+    <article class="secteur" id="pied" data-secteur="pied">
+      <div class="secteur-tete">
+        <div>
+          <h2 class="secteur-titre">Pied</h2>
+          <p class="secteur-accroche">Un oignon qui frotte, des orteils qui se replient, un pied qui fait mal&nbsp;?</p>
+          <p class="secteur-intro">Les déformations du pied s’installent lentement, favorisées par des chaussures étroites ou par l’hérédité.</p>
+        </div>
+        <figure class="secteur-schema"><span class="zone-visuel" style="--cx:238;--cy:786;--z:2.8"><img src="img/squelette.svg" alt="Schéma des os du pied"></span><figcaption>Talon, métatarsiens et orteils</figcaption></figure>
+      </div>
+
+      <h3 class="secteur-soustitre">Les maladies fréquentes</h3>
+      <ul class="affections">
+        <li class="affection"><h4>Hallux valgus (oignon)</h4><p>Le gros orteil dévie vers les autres orteils, et une bosse apparaît à sa base.</p><p class="symptomes"><strong>Symptômes</strong>Bosse douloureuse, difficulté à trouver des chaussures.</p></li>
+        <li class="affection"><h4>Orteils en griffe</h4><p>Les petits orteils se replient et frottent dans la chaussure.</p><p class="symptomes"><strong>Symptômes</strong>Cors, douleur sur le dessus des orteils ou sous l’avant du pied.</p></li>
+        <li class="affection"><h4>Arthrose du pied</h4><p>Le cartilage du milieu du pied ou du gros orteil s’use.</p><p class="symptomes"><strong>Symptômes</strong>Douleur et raideur à la marche, gros orteil qui ne se plie plus.</p></li>
+      </ul>
+
+      <h3 class="secteur-soustitre">Votre prise en charge à l’HiB</h3>
+      <ol class="etapes">
+        <li><h4>Consultation</h4><p>Examen du pied debout… et de vos chaussures.</p></li>
+        <li><h4>Bilan</h4><p>Radiographie debout.</p></li>
+        <li><h4>Traitement</h4><p>Chaussures adaptées, semelles, protections pour les orteils.</p></li>
+        <li><h4>Suivi</h4><p>Une opération de correction si la gêne persiste, souvent en ambulatoire.</p></li>
+      </ol>
+
+      <h3 class="secteur-soustitre">Les options de traitement</h3>
+      <div class="solutions">
+        <div class="solution"><h4>Sans opération</h4><ul><li>Chaussures larges et souples</li><li>Semelles orthopédiques sur mesure</li><li>Protections et orthèses d’orteils</li></ul></div>
+        <div class="solution"><h4>Quand une opération est utile</h4><ul><li>Correction de l’hallux valgus</li><li>Correction des orteils en griffe</li><li>Blocage d’une articulation usée (arthrodèse)</li></ul></div>
+      </div>
+      <div class="secteur-suite">
+        <a class="bouton bouton-marine" href="contacts-acces.html">Prendre rendez-vous</a>
+        <a class="lien-fleche" href="interventions.html">Toutes nos solutions</a>
+        <a class="lien-fleche lien-trauma" href="traumatologie.html#pied">Traumatismes du pied</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- ============ Appel ============ -->
+  <section class="appel enveloppe">
+    <div class="appel-carte">
+      <div>
+        <h2 class="appel-titre">Une douleur qui dure&nbsp;?</h2>
+        <p>Votre médecin traitant peut vous adresser à notre consultation. Vous pouvez aussi nous appeler directement.</p>
+      </div>
+      <div class="appel-actions">
+        <a class="appel-tel" href="tel:+41266628011">+41 (0)26 662 80 11</a>
+        <a class="bouton bouton-blanc" href="contacts-acces.html">Contacts &amp; accès</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pied">
+  <div class="enveloppe pied-grille">
+    <div class="pied-contact">
+      <p class="pied-titre">Nous joindre</p>
+      <p>Avenue de la Colline 3, 1530 Payerne</p>
+      <p><a href="tel:+41266628011">+41 (0)26 662 80 11</a> · <a href="mailto:info@hibroye.ch">info@hibroye.ch</a></p>
+    </div>
+    <nav class="pied-nav" aria-label="Pied de page">
+      <ul class="pied-liste">
+        <li><a href="le-service.html">Le service</a></li>
+        <li><a href="interventions.html">Interventions</a></li>
+        <li><a href="patients.html">Patients</a></li>
+        <li><a href="formations.html">Formations</a></li>
+        <li><a href="contacts-acces.html">Contacts &amp; accès</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="enveloppe pied-legal">
+    <ul class="pied-liste">
+      <li><a href="protection-des-donnees.html">Politique de confidentialité</a></li>
+      <li><a href="mentions-legales.html">Mentions légales</a></li>
+      <li><a href="conditions-utilisation.html">Conditions d’utilisation</a></li>
+      <li><a href="accessibilite.html">Accessibilité</a></li>
+    </ul>
+    <p>© 2026 Hôpital intercantonal de la Broye</p>
+  </div>
+</footer>
+
+<script src="js/app.js"></script>
+</body>
+</html>

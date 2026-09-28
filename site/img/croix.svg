@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700">
+  <!-- motif de croix blanches adoucies, répété en fond de page (nouvelle maquette) -->
+  <defs>
+    <filter id="doux" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+    <g id="croix"><rect x="-9" y="-30" width="18" height="60" rx="7"/><rect x="-30" y="-9" width="60" height="18" rx="7"/></g>
+  </defs>
+  <g fill="#FFFFFF" filter="url(#doux)">
+    <use href="#croix" transform="translate(70 90) scale(1.2)" opacity=".42"/>
+    <use href="#croix" transform="translate(300 40) scale(.8)" opacity=".3"/>
+    <use href="#croix" transform="translate(520 150) scale(1.5)" opacity=".28"/>
+    <use href="#croix" transform="translate(780 70) scale(1)" opacity=".38"/>
+    <use href="#croix" transform="translate(160 360) scale(.9)" opacity=".34"/>
+    <use href="#croix" transform="translate(420 440) scale(1.25)" opacity=".4"/>
+    <use href="#croix" transform="translate(690 380) scale(.75)" opacity=".3"/>
+    <use href="#croix" transform="translate(60 610) scale(1.4)" opacity=".26"/>
+    <use href="#croix" transform="translate(310 620) scale(.7)" opacity=".36"/>
+    <use href="#croix" transform="translate(830 590) scale(1.15)" opacity=".32"/>
+  </g>
+</svg>

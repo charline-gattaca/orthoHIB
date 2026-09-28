@@ -1,0 +1,223 @@
+<!-- titre: Orthopédie et traumatologie — Hôpital intercantonal de la Broye -->
+<!-- description: Une chute, une entorse, une douleur qui dure ? Le service d’orthopédie et de traumatologie de l’HiB, à Payerne, vous aide à retrouver votre mobilité. -->
+<!-- classe: page-accueil -->
+
+<main>
+
+  <!-- ============ Carte interactive ============ -->
+  <section class="hero enveloppe">
+    <div class="hero-carte">
+      <div class="hero-texte">
+        <h1 class="hero-titre">Service<br>d’orthopédie<br>et de<br>traumatologie</h1>
+        <p class="hero-intro">Une chute, une entorse, une douleur qui s’installe&nbsp;? Notre équipe pluridisciplinaire est là pour vous aider à retrouver votre mobilité et à garder votre autonomie au quotidien.</p>
+        <p class="hero-invite">
+          <span class="invite-haut">Indiquez vos</span>
+          <span class="invite-fort">Points de douleur
+            <svg class="chevrons" viewBox="0 0 72 36" width="72" height="36" aria-hidden="true" fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12L6 30" stroke="#C4D6EC"/><path d="M26 6l12 12-12 12" stroke="#9DBBE0"/><path d="M46 6l12 12-12 12" stroke="#77A2D1"/></svg>
+          </span>
+          <span class="invite-bas">sur le schéma</span>
+        </p>
+      </div>
+
+      <div class="carte" id="carte">
+        <div class="carte-formes" aria-hidden="true">
+          <span class="forme forme-bleue"></span>
+          <span class="forme forme-peche"></span>
+          <span class="forme forme-goutte"></span>
+        </div>
+        <p class="carte-legende">
+          <span class="legende legende-maladie">Maladie</span>
+          <span class="legende legende-trauma">Traumatisme</span>
+        </p>
+        <div class="carte-scene">
+          <img class="carte-corps" src="{{racine}}img/anatomie.svg" width="333" height="852" alt="Silhouette humaine : à gauche en bleu, les traumatismes ; à droite en corail, les maladies.">
+
+          <button class="point point-trauma" type="button" data-zone="epaule" data-cote="trauma" style="--x:41.4%;--y:15.8%" aria-controls="fiche-epaule" aria-expanded="false"><span class="sr">Épaule, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="coude" data-cote="trauma" style="--x:18%;--y:37.3%" aria-controls="fiche-coude" aria-expanded="false"><span class="sr">Coude, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="main" data-cote="trauma" style="--x:13.5%;--y:50.7%" aria-controls="fiche-main" aria-expanded="false"><span class="sr">Main et poignet, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="hanche" data-cote="trauma" style="--x:28.8%;--y:52.1%" aria-controls="fiche-hanche" aria-expanded="false"><span class="sr">Hanche, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="genou" data-cote="trauma" style="--x:38.7%;--y:73.6%" aria-controls="fiche-genou" aria-expanded="false"><span class="sr">Genou, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="cheville" data-cote="trauma" style="--x:41.4%;--y:93%" aria-controls="fiche-cheville" aria-expanded="false"><span class="sr">Cheville, traumatisme</span></button>
+          <button class="point point-trauma" type="button" data-zone="pied" data-cote="trauma" style="--x:36%;--y:97.9%" aria-controls="fiche-pied" aria-expanded="false"><span class="sr">Pied, traumatisme</span></button>
+
+          <button class="point point-maladie" type="button" data-zone="epaule" data-cote="maladie" style="--x:58.6%;--y:15.8%" aria-controls="fiche-epaule" aria-expanded="false"><span class="sr">Épaule, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="coude" data-cote="maladie" style="--x:82%;--y:37.3%" aria-controls="fiche-coude" aria-expanded="false"><span class="sr">Coude, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="main" data-cote="maladie" style="--x:86.5%;--y:50.7%" aria-controls="fiche-main" aria-expanded="false"><span class="sr">Main et poignet, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="hanche" data-cote="maladie" style="--x:71.2%;--y:52.1%" aria-controls="fiche-hanche" aria-expanded="false"><span class="sr">Hanche, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="genou" data-cote="maladie" style="--x:61.3%;--y:73.6%" aria-controls="fiche-genou" aria-expanded="false"><span class="sr">Genou, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="cheville" data-cote="maladie" style="--x:58.6%;--y:93%" aria-controls="fiche-cheville" aria-expanded="false"><span class="sr">Cheville, maladie</span></button>
+          <button class="point point-maladie" type="button" data-zone="pied" data-cote="maladie" style="--x:64%;--y:97.9%" aria-controls="fiche-pied" aria-expanded="false"><span class="sr">Pied, maladie</span></button>
+        </div>
+
+        <!-- une fiche par zone, deux volets : le point bleu n'affiche que le traumatisme, le point corail que la maladie -->
+        <article class="fiche" id="fiche-epaule" data-zone="epaule">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Épaule</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une chute, un choc, une épaule qui se déboîte&nbsp;?</p>
+            <ul><li>Luxation de l’épaule</li><li>Fracture de la clavicule ou de l’humérus</li><li>Rupture de la coiffe des rotateurs</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#epaule">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Une douleur qui s’installe ou vous réveille la nuit&nbsp;?</p>
+            <ul><li>Arthrose et prothèse d’épaule</li><li>Épaule gelée (capsulite)</li><li>Tendinite calcifiante</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#epaule">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche" id="fiche-coude" data-zone="coude">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Coude</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une chute sur le bras tendu&nbsp;?</p>
+            <ul><li>Fracture de l’olécrâne ou de la tête radiale</li><li>Luxation du coude</li><li>Lésion d’un ligament</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#coude">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Une douleur qui revient à chaque geste&nbsp;?</p>
+            <ul><li>Tennis-elbow (épicondylite)</li><li>Arthrose du coude</li><li>Nerf ulnaire comprimé</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#coude">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche" id="fiche-main" data-zone="main">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Main et poignet</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une chute sur la main, une coupure&nbsp;?</p>
+            <ul><li>Fracture du poignet</li><li>Fracture du scaphoïde</li><li>Coupure d’un tendon</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#main">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Des fourmillements, un doigt qui accroche&nbsp;?</p>
+            <ul><li>Syndrome du tunnel carpien</li><li>Doigt à ressaut</li><li>Arthrose du pouce</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#main">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche" id="fiche-hanche" data-zone="hanche">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Hanche</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une chute, surtout après 65 ans&nbsp;?</p>
+            <ul><li>Fracture du col du fémur</li><li>Fracture du bassin</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#hanche">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Une douleur à la marche qui s’aggrave&nbsp;?</p>
+            <ul><li>Arthrose et prothèse totale de hanche</li><li>Nécrose de la tête du fémur</li><li>Conflit de hanche</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#hanche">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche fiche-basse" id="fiche-genou" data-zone="genou">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Genou</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une torsion au sport, un choc&nbsp;?</p>
+            <ul><li>Rupture du ligament croisé</li><li>Lésion du ménisque</li><li>Fracture de la rotule ou du tibia</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#genou">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Il grince, gonfle ou fait mal avec le temps&nbsp;?</p>
+            <ul><li>Arthrose et prothèse totale ou partielle</li><li>Rotule instable</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#genou">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche fiche-basse" id="fiche-cheville" data-zone="cheville">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Cheville</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Une torsion, un faux pas&nbsp;?</p>
+            <ul><li>Entorse grave</li><li>Fracture de la malléole</li><li>Rupture du tendon d’Achille</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#cheville">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Une cheville qui tourne souvent ou qui fait mal&nbsp;?</p>
+            <ul><li>Arthrose de la cheville</li><li>Cheville instable</li><li>Tendon d’Achille douloureux</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#cheville">En savoir plus</a>
+          </div>
+        </article>
+        <article class="fiche fiche-basse" id="fiche-pied" data-zone="pied">
+          <button class="fiche-fermer" type="button" aria-label="Fermer">×</button>
+          <h2 class="fiche-titre">Pied</h2>
+          <div class="fiche-bloc bloc-trauma">
+            <p class="fiche-etiquette">Traumatisme</p>
+            <p class="fiche-accroche">Un choc, une chute d’une échelle&nbsp;?</p>
+            <ul><li>Fracture des métatarsiens</li><li>Fracture du talon (calcanéum)</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}traumatologie.html#pied">En savoir plus</a>
+          </div>
+          <div class="fiche-bloc bloc-maladie">
+            <p class="fiche-etiquette">Maladie</p>
+            <p class="fiche-accroche">Un oignon, des orteils qui frottent&nbsp;?</p>
+            <ul><li>Hallux valgus (oignon)</li><li>Orteils en griffe</li><li>Arthrose du pied</li></ul>
+            <a class="bouton bouton-marine" href="{{racine}}maladies.html#pied">En savoir plus</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Sept zones ============ -->
+  <section class="zones enveloppe">
+    <div class="zones-tete">
+      <h2 class="titre-section">Où avez-vous mal&nbsp;?</h2>
+      <p class="zones-chapo">Choisissez une zone du corps&nbsp;: nous vous expliquons simplement ce que nous pouvons faire pour vous.</p>
+    </div>
+    <ul class="zones-grille">
+      <!-- chaque vignette mène directement aux deux pages, avec le code couleur de la silhouette -->
+      <li class="zone"><span class="zone-visuel" style="--cx:290;--cy:178;--z:4"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Épaule</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#epaule">Traumatismes<span class="sr"> de l’épaule</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#epaule">Maladies<span class="sr"> de l’épaule</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:78;--cy:305;--z:4"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Coude</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#coude">Traumatismes<span class="sr"> du coude</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#coude">Maladies<span class="sr"> du coude</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:360;--cy:432;--z:3.8"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Main et poignet</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#main">Traumatismes<span class="sr"> de la main et du poignet</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#main">Maladies<span class="sr"> de la main et du poignet</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:152;--cy:372;--z:3.3"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Hanche</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#hanche">Traumatismes<span class="sr"> de la hanche</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#hanche">Maladies<span class="sr"> de la hanche</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:174;--cy:592;--z:4"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Genou</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#genou">Traumatismes<span class="sr"> du genou</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#genou">Maladies<span class="sr"> du genou</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:180;--cy:768;--z:4.2"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Cheville</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#cheville">Traumatismes<span class="sr"> de la cheville</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#cheville">Maladies<span class="sr"> de la cheville</span></a></span></li>
+      <li class="zone"><span class="zone-visuel" style="--cx:238;--cy:786;--z:4.2"><img src="{{racine}}img/squelette.svg" alt=""></span><span class="zone-nom">Pied</span><span class="zone-liens"><a class="lien-fleche lien-trauma" href="{{racine}}traumatologie.html#pied">Traumatismes<span class="sr"> du pied</span></a><a class="lien-fleche lien-maladie" href="{{racine}}maladies.html#pied">Maladies<span class="sr"> du pied</span></a></span></li>
+    </ul>
+  </section>
+
+  <!-- ============ Parcours ============ -->
+  <section class="parcours enveloppe">
+    <div class="parcours-carte">
+      <div class="parcours-intro">
+        <figure class="parcours-photo">
+          <img src="{{racine}}img/hib-entree.jpg" width="700" height="467" alt="L’entrée de l’Hôpital intercantonal de la Broye à Payerne">
+        </figure>
+        <h2 class="titre-section">On vous accompagne à chaque étape</h2>
+        <p>De la première consultation à la rééducation, notre équipe reste à vos côtés. Par où voulez-vous commencer&nbsp;?</p>
+        <a class="bouton bouton-marine" href="{{racine}}le-service.html">Découvrir le service</a>
+      </div>
+      <div class="parcours-cartes">
+        <a class="carte-service" href="{{racine}}le-service.html">
+          <span class="carte-service-icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V6.5L12 3l8 3.5V21M2.5 21h19M12 8v6M9 11h6M9.5 21v-3.5h5V21"/></svg></span>
+          <h3>Le service</h3>
+          <p>Qui sommes-nous&nbsp;? Médecins, physiothérapeutes, ergothérapeutes et soignants&nbsp;: découvrez l’équipe.</p>
+        </a>
+        <a class="carte-service" href="{{racine}}interventions.html">
+          <span class="carte-service-icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.6 16.9 16.9 8.6M8.6 16.9a2.3 2.3 0 1 1-3.3 1.8 2.3 2.3 0 1 1 1.8-3.3M16.9 8.6a2.3 2.3 0 1 1 3.3-1.8 2.3 2.3 0 1 1-1.8 3.3M7.1 15.4l1.5 1.5M15.4 7.1l1.5 1.5"/></svg></span>
+          <h3>Interventions</h3>
+          <p>Avec ou sans chirurgie, nos solutions par secteur et nos technologies, comme le robot ROSA ou la cryothérapie.</p>
+        </a>
+        <a class="carte-service" href="{{racine}}patients.html">
+          <span class="carte-service-icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+          <h3>Patients</h3>
+          <p>Consultation, radiologie, hospitalisation, préparation et rééducation&nbsp;: tout pour aborder votre séjour sereinement.</p>
+        </a>
+        <a class="carte-service" href="{{racine}}formations.html">
+          <span class="carte-service-icone"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9zM6 11v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5M22 9v6"/></svg></span>
+          <h3>Formations</h3>
+          <p>Chefs de clinique, assistants, stagiaires&nbsp;: guidelines ISFM, logement, planning et vie sociale.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
